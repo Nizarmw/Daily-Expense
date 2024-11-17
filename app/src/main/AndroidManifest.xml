@@ -12,22 +12,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DailyExpense"
         tools:targetApi="31">
-
-        <!-- Main activity yang akan dijadikan sebagai entry point -->
+        <activity
+            android:name=".LihatLaporan"
+            android:exported="false" />
+        <activity
+            android:name=".CatatAnggaran"
+            android:exported="false" />
+        <activity
+            android:name=".CatatPengeluaran"
+            android:exported="false" />
+        <activity
+            android:name=".Mainpage"
+            android:exported="false" /> <!-- Main activity yang akan dijadikan sebagai entry point -->
         <activity
             android:name=".SignIn"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
+                <action android:name="android.intent.action.MAIN" />
 
-        <!-- Activity lain dalam aplikasi -->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- Activity lain dalam aplikasi -->
         <activity
             android:name=".SignUp"
-            android:exported="true"/>
-
-
+            android:exported="true" />
     </application>
+
 </manifest>
