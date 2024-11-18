@@ -14,16 +14,16 @@
         tools:targetApi="31">
         <activity
             android:name=".LihatLaporan"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".CatatAnggaran"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".CatatPengeluaran"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Mainpage"
-            android:exported="false" /> <!-- Main activity yang akan dijadikan sebagai entry point -->
+            android:exported="true" />
         <activity
             android:name=".SignIn"
             android:exported="true">
