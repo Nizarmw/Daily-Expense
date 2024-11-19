@@ -7,19 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".CatatAnggaran">
 
-    <Spinner
-        android:id="@+id/spinner3"
-        android:layout_width="345dp"
-        android:layout_height="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
-
     <TextView
         android:id="@+id/textView19"
         android:layout_width="291dp"
         android:layout_height="52dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="52dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Catat Anggaran"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
@@ -27,7 +19,7 @@
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView20"
@@ -41,139 +33,126 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
+    <Button
+        android:id="@+id/buttonAddPengeluaran3"
+        android:layout_width="347dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="72dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Accept Anggaran"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/tvTanggalDipilihAnggaran"
+        android:layout_width="320dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="4dp"
+        android:text="Tanggal belum dipilih"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+    <Spinner
+        android:id="@+id/spinner4"
+        android:layout_width="332dp"
+        android:layout_height="27dp"
+        android:entries="@array/transaction_categories"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAddPengeluaran3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.556"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView24"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="325dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Kategori Transaksi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPilihTanggalAnggaran" />
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        android:layout_width="332dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:fontFamily="@font/poppins"
+        android:hint="misal: 50000"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView28" />
+
+    <TextView
+        android:id="@+id/textView28"
         android:layout_width="334dp"
         android:layout_height="22dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="Waktu (Bulan - Tahun)"
+        android:text="Nominal Transaksi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText4" />
+
+    <EditText
+        android:id="@+id/editTextText4"
+        android:layout_width="335dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:fontFamily="@font/poppins"
+        android:hint="misal: Makan di restoran enak"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="334dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="38dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Judul Transaksi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
     <TextView
-        android:id="@+id/textView22"
+        android:id="@+id/textView26"
         android:layout_width="334dp"
         android:layout_height="22dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="Total Nominal Anggaran"
+        android:text="Tanggal Transaksi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner4" />
-
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="334dp"
-        android:layout_height="22dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/poppins_bold"
-        android:text="Judul Transaksi"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner3" />
-
-    <TextView
-        android:id="@+id/textView28"
-        android:layout_width="334dp"
-        android:layout_height="22dp"
-        android:layout_marginTop="108dp"
-        android:fontFamily="@font/poppins_bold"
-        android:text="Nominal Transaksi"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner3" />
-
-    <TextView
-        android:id="@+id/textView24"
-        android:layout_width="325dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/poppins_bold"
-        android:text="Kategori Transaksi"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
 
-    <Spinner
-        android:id="@+id/spinner4"
-        android:layout_width="323dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="4dp"
-        android:entries="@array/transaction_categories"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView24" />
-
     <Button
-        android:id="@+id/buttonAddPengeluaran3"
-        android:layout_width="347dp"
-        android:layout_height="48dp"
-        android:fontFamily="@font/poppins_bold"
-        android:text="Accept Anggaran"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/btnPilihTanggalAnggaran"
+        android:layout_width="324dp"
+        android:layout_height="43dp"
+        android:text="Pilih Tanggal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTanggalDipilihAnggaran" />
 
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="430dp"
-        android:layout_height="155dp"
-        app:srcCompat="@drawable/header"
-        tools:layout_editor_absoluteX="-10dp"
-        tools:layout_editor_absoluteY="-78dp" />
-
-    <TextView
-        android:id="@+id/textView25"
-        android:layout_width="260dp"
-        android:layout_height="27dp"
-        android:fontFamily="@font/poppins"
-        android:text="(Load Nominal)"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
-
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_bold"
-        android:text="Rp"
-        app:layout_constraintEnd_toStartOf="@+id/textView25"
-        app:layout_constraintHorizontal_bias="0.719"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView25" />
-
-    <EditText
-        android:id="@+id/editTextText4"
-        android:layout_width="335dp"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:fontFamily="@font/poppins"
-        android:hint="misal: Makan di restoran enak"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
-
-    <EditText
-        android:id="@+id/editTextNumber"
-        android:layout_width="332dp"
-        android:layout_height="47dp"
-        android:ems="10"
-        android:fontFamily="@font/poppins"
-        android:hint="misal: 50000"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

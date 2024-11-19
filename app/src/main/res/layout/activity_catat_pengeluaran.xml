@@ -25,11 +25,11 @@
         android:id="@+id/textView9"
         android:layout_width="334dp"
         android:layout_height="22dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="64dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Judul Transaksi"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -37,11 +37,11 @@
         android:id="@+id/textView12"
         android:layout_width="334dp"
         android:layout_height="22dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Kategori Transaksi"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPilihTanggal" />
 
@@ -62,7 +62,7 @@
         android:id="@+id/textView13"
         android:layout_width="334dp"
         android:layout_height="22dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Nominal Transaksi"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,14 +87,16 @@
         android:text="Tambah Pengeluaran"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        app:layout_constraintVertical_bias="0.31" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="334dp"
         android:layout_height="22dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Tanggal Transaksi"
         app:layout_constraintEnd_toEndOf="parent"
@@ -106,23 +108,23 @@
         android:id="@+id/imageView7"
         android:layout_width="430dp"
         android:layout_height="155dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/header"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-10dp"
-        tools:layout_editor_absoluteY="4dp" />
+        tools:layout_editor_absoluteX="-10dp" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="334dp"
         android:layout_height="55dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Catat Pengeluaran"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -133,6 +135,7 @@
         android:fontFamily="@font/poppins"
         android:text="Catat dan Kategorikan Pengeluaranmu disini!"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textColor="#C8C4C4"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
@@ -143,9 +146,9 @@
         android:id="@+id/btnPilihTanggal"
         android:layout_width="323dp"
         android:layout_height="42dp"
-        android:layout_marginTop="12dp"
         android:text="Pilih Tanggal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.477"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTanggalDipilih" />
 
