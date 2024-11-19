@@ -6,28 +6,33 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SignUp : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-        // Initialize Firebase Auth
+        // Initialize Firebase Auth and Firestore
         auth = FirebaseAuth.getInstance()
+        firestore = FirebaseFirestore.getInstance()
 
         val emailEditText = findViewById<EditText>(R.id.editTextEmail)
+        val usernameEditText = findViewById<EditText>(R.id.editTextUsername)
         val passwordEditText = findViewById<EditText>(R.id.editTextPassword)
         val signUpButton = findViewById<Button>(R.id.buttonRegister)
 
         signUpButton.setOnClickListener {
             val email = emailEditText.text.toString().trim()
+            val username = usernameEditText.text.toString().trim()
             val password = passwordEditText.text.toString().trim()
 
-            if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Email and password cannot be empty.", Toast.LENGTH_SHORT).show()
+            if (email.isEmpty() || password.isEmpty() || username.isEmpty()) {
+                Toast.makeText(this, "Email, username, and password cannot be empty.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -35,12 +40,23 @@ class SignUp : AppCompatActivity() {
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
+                        // Save additional user info in Firestore
                         val user = auth.currentUser
-                        Toast.makeText(this, "Sign Up successful.", Toast.LENGTH_SHORT).show()
-                        // Optionally, update UI or navigate to another activity
+                        user?.let {
+                            val userId = user.uid
+                            val userData = hashMapOf(
+                                "username" to username,
+                                "email" to email
+                            )
+                            firestore.collection("users").document(userId).set(userData)
+                                .addOnSuccessListener {
+                                    Toast.makeText(this, "Sign up and save username successful.", Toast.LENGTH_SHORT).show()
+                                }
+                                .addOnFailureListener { e ->
+                                    Toast.makeText(this, "Failed to save user info: ${e.message}", Toast.LENGTH_SHORT).show()
+                                }
+                        }
                     } else {
-                        // If sign in fails, display a message to the user.
                         Toast.makeText(this, "Authentication failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                     }
                 }
