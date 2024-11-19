@@ -64,4 +64,5 @@ class Mainpage : AppCompatActivity() {
             insets
         }
     }
+
 }

@@ -19,7 +19,7 @@
         android:id="@+id/textView19"
         android:layout_width="291dp"
         android:layout_height="52dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Catat Anggaran"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
@@ -45,10 +45,11 @@
         android:id="@+id/textView21"
         android:layout_width="334dp"
         android:layout_height="22dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Waktu (Bulan - Tahun)"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
@@ -56,39 +57,49 @@
         android:id="@+id/textView22"
         android:layout_width="334dp"
         android:layout_height="22dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Total Nominal Anggaran"
-        app:layout_constraintBottom_toTopOf="@+id/editTextNumber"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner4"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner4" />
 
     <TextView
         android:id="@+id/textView23"
         android:layout_width="334dp"
         android:layout_height="22dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Judul Transaksi"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.519"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner3" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="334dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="108dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Nominal Transaksi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner3" />
 
     <TextView
         android:id="@+id/textView24"
-        android:layout_width="309dp"
+        android:layout_width="325dp"
         android:layout_height="26dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Kategori Transaksi"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.382"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText4" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
 
     <Spinner
         android:id="@+id/spinner4"
@@ -108,27 +119,37 @@
         android:text="Accept Anggaran"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.421"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
     <ImageView
         android:id="@+id/imageView9"
         android:layout_width="430dp"
         android:layout_height="155dp"
         app:srcCompat="@drawable/header"
-        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="-10dp"
         tools:layout_editor_absoluteY="-78dp" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="260dp"
+        android:layout_height="27dp"
+        android:fontFamily="@font/poppins"
+        android:text="(Load Nominal)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
     <TextView
         android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Rp"
+        app:layout_constraintEnd_toStartOf="@+id/textView25"
+        app:layout_constraintHorizontal_bias="0.719"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextNumber" />
+        app:layout_constraintTop_toTopOf="@+id/textView25" />
 
     <EditText
         android:id="@+id/editTextText4"
@@ -145,15 +166,14 @@
 
     <EditText
         android:id="@+id/editTextNumber"
-        android:layout_width="228dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="104dp"
+        android:layout_width="332dp"
+        android:layout_height="47dp"
         android:ems="10"
+        android:fontFamily="@font/poppins"
+        android:hint="misal: 50000"
         android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.779"
-        tools:text="(Load Nominal)" />
+        app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
