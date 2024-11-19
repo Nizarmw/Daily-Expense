@@ -11,15 +11,16 @@
         android:id="@+id/buttonAddPengeluaran2"
         android:layout_width="342dp"
         android:layout_height="64dp"
-        android:layout_marginBottom="132dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginBottom="4dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Lihat Anggaran"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintHorizontal_bias="0.565"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner2"
-        app:layout_constraintVertical_bias="0.301" />
+        app:layout_constraintVertical_bias="0.163" />
 
     <Spinner
         android:id="@+id/spinner2"
@@ -28,6 +29,7 @@
         android:entries="@array/bulan"
         android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
@@ -35,12 +37,13 @@
         android:id="@+id/textView18"
         android:layout_width="345dp"
         android:layout_height="26dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="300dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Waktu (Bulan - Tahun)"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView27" />
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <TextView
         android:id="@+id/textView16"
@@ -69,12 +72,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
-    <TextView
-        android:id="@+id/textView27"
-        android:layout_width="186dp"
-        android:layout_height="146dp"
-        android:layout_marginTop="48dp"
-        android:text="INI BUAT PIE CHART"
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pieChart"
+        android:layout_width="311dp"
+        android:layout_height="224dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
