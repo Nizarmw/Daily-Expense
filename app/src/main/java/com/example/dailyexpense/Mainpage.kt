@@ -28,16 +28,24 @@ class Mainpage : AppCompatActivity() {
     }
 
     private fun setupButtonListeners() {
+        val userId = auth.currentUser?.uid  // Get the current user ID
+
         findViewById<Button>(R.id.button3).setOnClickListener {
-            startActivity(Intent(this, CatatAnggaran::class.java))
+            val intent = Intent(this, CatatAnggaran::class.java)
+            intent.putExtra("USER_ID", userId)  // Pass the userId to CatatAnggaran
+            startActivity(intent)
         }
 
         findViewById<Button>(R.id.button2).setOnClickListener {
-            startActivity(Intent(this, CatatPengeluaran::class.java))
+            val intent = Intent(this, CatatPengeluaran::class.java)
+            intent.putExtra("USER_ID", userId)  // Pass the userId to CatatPengeluaran
+            startActivity(intent)
         }
 
         findViewById<Button>(R.id.button).setOnClickListener {
-            startActivity(Intent(this, LihatLaporan::class.java))
+            val intent = Intent(this, LihatLaporan::class.java)
+            intent.putExtra("USER_ID", userId)  // Pass the userId to LihatLaporan
+            startActivity(intent)
         }
     }
 
@@ -64,5 +72,4 @@ class Mainpage : AppCompatActivity() {
             insets
         }
     }
-
 }
