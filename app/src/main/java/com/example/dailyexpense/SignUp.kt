@@ -1,5 +1,6 @@
 package com.example.dailyexpense
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -36,11 +37,11 @@ class SignUp : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Create a new user
+            // Bikin User
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        // Save additional user info in Firestore
+                        // Simpan Username
                         val user = auth.currentUser
                         user?.let {
                             val userId = user.uid
@@ -51,6 +52,7 @@ class SignUp : AppCompatActivity() {
                             firestore.collection("users").document(userId).set(userData)
                                 .addOnSuccessListener {
                                     Toast.makeText(this, "Sign up and save username successful.", Toast.LENGTH_SHORT).show()
+                                    navigateToSignIn()
                                 }
                                 .addOnFailureListener { e ->
                                     Toast.makeText(this, "Failed to save user info: ${e.message}", Toast.LENGTH_SHORT).show()
@@ -61,5 +63,11 @@ class SignUp : AppCompatActivity() {
                     }
                 }
         }
+
+    }
+    private fun navigateToSignIn() {
+        // navtoSignInpage
+        val intent = Intent(this, SignIn::class.java)
+        startActivity(intent)
     }
 }
