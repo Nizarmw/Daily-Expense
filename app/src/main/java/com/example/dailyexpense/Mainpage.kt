@@ -28,7 +28,7 @@ class Mainpage : AppCompatActivity() {
     }
 
     private fun setupButtonListeners() {
-        findViewById<Button>(R.id.button).setOnClickListener {
+        findViewById<Button>(R.id.button3).setOnClickListener {
             startActivity(Intent(this, CatatAnggaran::class.java))
         }
 
@@ -36,7 +36,7 @@ class Mainpage : AppCompatActivity() {
             startActivity(Intent(this, CatatPengeluaran::class.java))
         }
 
-        findViewById<Button>(R.id.button3).setOnClickListener {
+        findViewById<Button>(R.id.button).setOnClickListener {
             startActivity(Intent(this, LihatLaporan::class.java))
         }
     }
