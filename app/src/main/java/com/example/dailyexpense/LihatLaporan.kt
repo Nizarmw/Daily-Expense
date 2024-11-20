@@ -2,6 +2,8 @@ package com.example.dailyexpense
 
 import android.graphics.Color
 import android.os.Bundle
+import android.widget.AdapterView
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.github.mikephil.charting.charts.PieChart
@@ -12,6 +14,8 @@ import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.DecimalFormat
+import java.text.NumberFormat
 
 class LihatLaporan : AppCompatActivity() {
 
@@ -23,6 +27,7 @@ class LihatLaporan : AppCompatActivity() {
         setContentView(R.layout.activity_lihat_laporan)
 
         val pieChart: PieChart = findViewById(R.id.pieChart)
+        val spinnerBulan: Spinner = findViewById(R.id.spinner2)
 
         firestore = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
@@ -33,11 +38,23 @@ class LihatLaporan : AppCompatActivity() {
             return
         }
 
-        // Gunakan listener untuk data dan update PieChart
-        fetchDataAndGenerateChart(pieChart, userId)
+        // Listener untuk Spinner
+        spinnerBulan.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: android.view.View?, position: Int, id: Long) {
+                val selectedMonth = position + 1 // Indeks Spinner dimulai dari 0
+                val selectedYear = "2024" // Anda bisa mengganti ini sesuai kebutuhan
+
+                val selectedMonthYear = "$selectedMonth/$selectedYear"
+                fetchDataAndGenerateChart(pieChart, userId, selectedMonthYear)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Tidak ada tindakan jika tidak ada bagian yang dipilih
+            }
+        }
     }
 
-    private fun fetchDataAndGenerateChart(pieChart: PieChart, userId: String) {
+    private fun fetchDataAndGenerateChart(pieChart: PieChart, userId: String, selectedMonthYear: String) {
         firestore.collection("budgets")
             .whereEqualTo("userId", userId)
             .get()
@@ -50,18 +67,30 @@ class LihatLaporan : AppCompatActivity() {
                         val totalExpenses = mutableMapOf<String, Float>()
 
                         for (document in budgetSnapshot) {
+                            val date = document.getString("date") ?: continue
                             val category = document.getString("category") ?: continue
                             val amount = document.getString("amount")?.toFloatOrNull() ?: continue
-                            totalBudgets[category] = totalBudgets.getOrDefault(category, 0f) + amount
+
+                            // Filter berdasarkan bulan dan tahun
+                            val monthYear = date.substring(date.indexOf("/") + 1)
+                            if (monthYear == selectedMonthYear) {
+                                totalBudgets[category] = totalBudgets.getOrDefault(category, 0f) + amount
+                            }
                         }
 
                         for (document in expenseSnapshot) {
+                            val date = document.getString("tanggal") ?: continue
                             val category = document.getString("kategori") ?: continue
                             val amount = document.getString("nominal")?.toFloatOrNull() ?: continue
-                            totalExpenses[category] = totalExpenses.getOrDefault(category, 0f) + amount
+
+                            // Filter berdasarkan bulan dan tahun
+                            val monthYear = date.substring(date.indexOf("/") + 1)
+                            if (monthYear == selectedMonthYear) {
+                                totalExpenses[category] = totalExpenses.getOrDefault(category, 0f) + amount
+                            }
                         }
 
-                        // Update PieChart dengan data
+                        // Update PieChart
                         updatePieChart(pieChart, totalBudgets, totalExpenses)
                     }
                     .addOnFailureListener {
@@ -80,8 +109,6 @@ class LihatLaporan : AppCompatActivity() {
     ) {
         val entries = ArrayList<PieEntry>()
         val colors = ArrayList<Int>()
-        var totalRemainingBudget = 0f
-
         val predefinedColors = listOf(
             Color.rgb(255, 99, 132),
             Color.rgb(54, 162, 235),
@@ -94,7 +121,6 @@ class LihatLaporan : AppCompatActivity() {
         for ((category, budget) in totalBudgets) {
             val expense = totalExpenses.getOrDefault(category, 0f)
             val remaining = (budget - expense).coerceAtLeast(0f)
-            totalRemainingBudget += remaining
 
             if (remaining > 0) {
                 entries.add(PieEntry(remaining, category))
@@ -133,7 +159,7 @@ class LihatLaporan : AppCompatActivity() {
                     val remaining = e.value
                     Toast.makeText(
                         this@LihatLaporan,
-                        "Sisa anggaran untuk $category: Rp${remaining.toInt()}",
+                        "Sisa anggaran untuk $category: ${formatRupiah(remaining)}",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -145,5 +171,10 @@ class LihatLaporan : AppCompatActivity() {
         })
 
         pieChart.invalidate()
+    }
+
+    private fun formatRupiah(value: Float): String {
+        val formatter: NumberFormat = DecimalFormat("#,###")
+        return "Rp ${formatter.format(value)}"
     }
 }
